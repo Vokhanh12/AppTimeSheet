@@ -67,7 +67,7 @@ flutter:
   - ./lib/asset/image/shadow_formfield.png
   - ./lib/asset/image/Vector-eye-before.png
   - ./lib/asset/image/Vector-eye-after.png
-
+  - ./lib/asset/image/icon-google.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   

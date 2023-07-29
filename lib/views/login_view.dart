@@ -16,8 +16,10 @@ class _LoginViewState extends State<LoginView> {
   bool _isChangeToActive_Password = false;
   bool _isChangeToActive_IconButton = false;
   bool _isChangeIcon = false;
+  bool _isChangeObscureText = true;
   String _valueEmail = '';
   String _valuePassword = '';
+  int _countIcon = 0;
   @override
   Widget build(BuildContext context) {
     final double SCREEN_HEIGHT = MediaQuery.of(context).size.height;
@@ -290,7 +292,11 @@ class _LoginViewState extends State<LoginView> {
                       child: Column(
                         children: [
                           MyTextField(
+                            keyboardType: TextInputType.emailAddress,
                             TextHint: 'Email',
+                            enableSuggestions: false,
+                            autocorrect: false,
+                            obscureText: false,
                             ChangeToActive: _isChangeToActive_Email,
                             onTap: () {
                               setState(() {
@@ -314,7 +320,10 @@ class _LoginViewState extends State<LoginView> {
                             children: [
                               Positioned(
                                 child: MyTextField(
-                                  TextHint: 'Password',
+                                  enableSuggestions: false,
+                                  autocorrect: false,
+                                  obscureText: _isChangeObscureText,
+                                  TextHint: 'Mật khẩu',
                                   ChangeToActive: _isChangeToActive_Password,
                                   onTap: () {
                                     setState(() {
@@ -346,7 +355,16 @@ class _LoginViewState extends State<LoginView> {
                                               _isChangeToActive_Password,
                                           onPressed: () {
                                             setState(() {
-                                              _isChangeIcon = true;
+                                              if (_countIcon % 2 == 0) {
+                                                _isChangeIcon = true;
+                                                print("show password");
+                                                _isChangeObscureText = false;
+                                              } else {
+                                                _isChangeIcon = false;
+                                                print("hide password");
+                                                _isChangeObscureText = true;
+                                              }
+                                              _countIcon++;
 
                                               _isChangeToActive_IconButton =
                                                   true;
@@ -356,6 +374,183 @@ class _LoginViewState extends State<LoginView> {
                                   ))
                             ],
                           ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  "Quên mật khẩu?",
+                                  style: TextStyle(
+                                    color: Color(0xFF2899F6),
+                                    fontSize: 13,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                )),
+                          ),
+                          Container(
+                            width: SCREEN_WIDTH,
+                            height: 50,
+                            child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        Color(0xFF2D39A6)),
+                                    shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8)))),
+                                onPressed: () {},
+                                child: Text(
+                                  'Đăng nhập',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                )),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            width: SCREEN_WIDTH,
+                            height: 50,
+                            child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        Color(0xFF0D7BD4)),
+                                    shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8)))),
+                                onPressed: () {},
+                                child: Text(
+                                  'Đăng ký',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                )),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          SizedBox(
+                            width: 29,
+                            height: 19,
+                            child: Text(
+                              'Hoặc',
+                              style: TextStyle(
+                                color: Color(0xFFA3A9AC),
+                                fontSize: 12,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(27),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                // Add your onPressed logic here
+                              },
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(203, 40),
+                                padding: EdgeInsets.symmetric(vertical: 4),
+                                primary: Color(0xFFC31E1E),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: 33,
+                                                height: 22.69,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "./lib/asset/image/icon-google.png"),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(width: 3),
+                                        Container(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: 1.50,
+                                                height: 17,
+                                                decoration: ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              3)),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(width: 3),
+                                        Container(
+                                          height: 18,
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                'Tài khoản Google+',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15,
+                                                  fontFamily: 'Inter',
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
