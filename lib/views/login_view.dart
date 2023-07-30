@@ -301,10 +301,9 @@ class _LoginViewState extends State<LoginView> {
                             onTap: () {
                               setState(() {
                                 _isChangeToActive_Email = true;
-                                if (_valuePassword.isEmpty)
-                                  _isChangeToActive_Password = false;
-                                else
-                                  _isChangeToActive_Password = true;
+                                _isChangeToActive_Email = true;
+                                _isChangeToActive_Password =
+                                    _valuePassword.isNotEmpty;
                               });
                             },
                             onChanged: (value) {

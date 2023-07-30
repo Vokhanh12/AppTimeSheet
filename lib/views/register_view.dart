@@ -9,6 +9,22 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+  bool _isChangeToActive_tfNameEmployee = false;
+  bool _isChangeToActive_tfOffice = false;
+  bool _isChangeToActive_tfTypeOfWork = false;
+  bool _isChangeToActive_tfEmail = false;
+  bool _isChangeToActive_tfStatus = false;
+  bool _isChangeToActive_tfCreator = false;
+  bool _isChangeToActive_tfDateCreated = false;
+
+  String _value_NameEmployee = "";
+  String _value_Office = "";
+  String _value_TypeOfWork = "";
+  String _value_Email = "";
+  String _value_Status = "";
+  String _value_Creator = "";
+  String _value_DateCreated = "";
+
   @override
   Widget build(BuildContext context) {
     final double SCREEN_HEIGHT = MediaQuery.of(context).size.height;
@@ -113,121 +129,155 @@ class _RegisterViewState extends State<RegisterView> {
             Align(
               alignment: Alignment.center,
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: SCREEN_WIDTH - 30),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: SCREEN_WIDTH,
-                      child: MyTextField(
-                        TextHint: 'Tên nhân viên',
-                        ChangeToActive: false,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        obscureText: false,
-                        onTap: () {},
-                        onChanged: (value) {},
+                constraints: BoxConstraints(
+                  maxWidth: SCREEN_WIDTH - 30,
+                ),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: SCREEN_WIDTH,
+                        child: MyTextField(
+                          TextHint: 'Tên nhân viên',
+                          ChangeToActive: false,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: false,
+                          onTap: () {
+                            setState(() {
+                              _isChangeToActive_tfNameEmployee = true;
+                              if (_value_NameEmployee.isEmpty)
+                                _isChangeToActive_tfNameEmployee = false;
+                              else
+                                _isChangeToActive_tfNameEmployee = true;
+                              if (_value_NameEmployee.isEmpty)
+                                _isChangeToActive_tfNameEmployee = false;
+                              else
+                                _isChangeToActive_tfNameEmployee = true;
+                              if (_value_NameEmployee.isEmpty)
+                                _isChangeToActive_tfNameEmployee = false;
+                              else
+                                _isChangeToActive_tfNameEmployee = true;
+                              if (_value_NameEmployee.isEmpty)
+                                _isChangeToActive_tfNameEmployee = false;
+                              else
+                                _isChangeToActive_tfNameEmployee = true;
+                              if (_value_NameEmployee.isEmpty)
+                                _isChangeToActive_tfNameEmployee = false;
+                              else
+                                _isChangeToActive_tfNameEmployee = true;
+                              if (_value_NameEmployee.isEmpty)
+                                _isChangeToActive_tfNameEmployee = false;
+                              else
+                                _isChangeToActive_tfNameEmployee = true;
+                            });
+                          },
+                          onChanged: (value) {},
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      width: SCREEN_WIDTH,
-                      child: MyTextField(
-                        TextHint: 'Văn phòng làm việc',
-                        ChangeToActive: false,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        obscureText: false,
-                        onTap: () {},
-                        onChanged: (value) {},
+                      SizedBox(
+                        height: 10,
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: (SCREEN_WIDTH / 3) - 18,
-                          child: MyTextField(
-                            TextHint: 'Cấp bậc',
-                            ChangeToActive: false,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                            obscureText: false,
-                            onTap: () {},
-                            onChanged: (value) {},
+                      SizedBox(
+                        width: SCREEN_WIDTH,
+                        child: MyTextField(
+                          TextHint: 'Văn phòng làm việc',
+                          ChangeToActive: false,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: false,
+                          onTap: () {},
+                          onChanged: (value) {},
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: (SCREEN_WIDTH / 3) - 18,
+                            child: MyTextField(
+                              TextHint: 'Cấp bậc',
+                              ChangeToActive: false,
+                              enableSuggestions: false,
+                              autocorrect: false,
+                              obscureText: false,
+                              onTap: () {},
+                              onChanged: (value) {},
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 6,
-                        ),
-                        SizedBox(
-                          width: ((SCREEN_WIDTH / 3) + (SCREEN_WIDTH / 3)) - 18,
-                          child: MyTextField(
-                            TextHint: 'Loại hình công việc',
-                            ChangeToActive: false,
-                            enableSuggestions: false,
-                            autocorrect: false,
-                            obscureText: false,
-                            onTap: () {},
-                            onChanged: (value) {},
+                          SizedBox(
+                            width: 6,
                           ),
+                          SizedBox(
+                            width:
+                                ((SCREEN_WIDTH / 3) + (SCREEN_WIDTH / 3)) - 18,
+                            child: MyTextField(
+                              TextHint: 'Loại hình công việc',
+                              ChangeToActive: false,
+                              enableSuggestions: false,
+                              autocorrect: false,
+                              obscureText: false,
+                              onTap: () {},
+                              onChanged: (value) {},
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      SizedBox(
+                        width: SCREEN_WIDTH,
+                        child: MyTextField(
+                          TextHint: 'Email',
+                          ChangeToActive: false,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: false,
+                          onTap: () {},
+                          onChanged: (value) {},
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: SCREEN_WIDTH,
-                      child: MyTextField(
-                        TextHint: 'Email',
-                        ChangeToActive: false,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        obscureText: false,
-                        onTap: () {},
-                        onChanged: (value) {},
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: SCREEN_WIDTH,
-                      child: MyTextField(
-                        TextHint: 'Trạng thái',
-                        ChangeToActive: false,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        obscureText: false,
-                        onTap: () {},
-                        onChanged: (value) {},
+                      SizedBox(height: 10),
+                      SizedBox(
+                        width: SCREEN_WIDTH,
+                        child: MyTextField(
+                          TextHint: 'Trạng thái',
+                          ChangeToActive: false,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: false,
+                          onTap: () {},
+                          onChanged: (value) {},
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: SCREEN_WIDTH,
-                      child: MyTextField(
-                        TextHint: 'Người tạo',
-                        ChangeToActive: false,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        obscureText: false,
-                        onTap: () {},
-                        onChanged: (value) {},
+                      SizedBox(height: 10),
+                      SizedBox(
+                        width: SCREEN_WIDTH,
+                        child: MyTextField(
+                          TextHint: 'Người tạo',
+                          ChangeToActive: false,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: false,
+                          onTap: () {},
+                          onChanged: (value) {},
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: SCREEN_WIDTH,
-                      child: MyTextField(
-                        TextHint: 'Ngày tạo',
-                        ChangeToActive: false,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        obscureText: false,
-                        onTap: () {},
-                        onChanged: (value) {},
+                      SizedBox(height: 10),
+                      SizedBox(
+                        width: SCREEN_WIDTH,
+                        child: MyTextField(
+                          TextHint: 'Ngày tạo',
+                          ChangeToActive: false,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: false,
+                          onTap: () {},
+                          onChanged: (value) {},
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
