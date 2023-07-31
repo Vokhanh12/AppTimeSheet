@@ -15,6 +15,7 @@ class _RegisterViewState extends State<RegisterView> {
   bool _isChangeToActive_tfEmail = false;
   bool _isChangeToActive_tfStatus = false;
   bool _isChangeToActive_tfCreator = false;
+  bool _isChangeToActive_tfRank = false;
   bool _isChangeToActive_tfDateCreated = false;
 
   String _value_NameEmployee = "";
@@ -23,6 +24,7 @@ class _RegisterViewState extends State<RegisterView> {
   String _value_Email = "";
   String _value_Status = "";
   String _value_Creator = "";
+  String _value_Rank = "";
   String _value_DateCreated = "";
 
   @override
@@ -140,40 +142,35 @@ class _RegisterViewState extends State<RegisterView> {
                         width: SCREEN_WIDTH,
                         child: MyTextField(
                           TextHint: 'Tên nhân viên',
-                          ChangeToActive: false,
+                          ChangeToActive: _isChangeToActive_tfNameEmployee,
                           enableSuggestions: false,
                           autocorrect: false,
                           obscureText: false,
                           onTap: () {
                             setState(() {
                               _isChangeToActive_tfNameEmployee = true;
-                              if (_value_NameEmployee.isEmpty)
-                                _isChangeToActive_tfNameEmployee = false;
-                              else
-                                _isChangeToActive_tfNameEmployee = true;
-                              if (_value_NameEmployee.isEmpty)
-                                _isChangeToActive_tfNameEmployee = false;
-                              else
-                                _isChangeToActive_tfNameEmployee = true;
-                              if (_value_NameEmployee.isEmpty)
-                                _isChangeToActive_tfNameEmployee = false;
-                              else
-                                _isChangeToActive_tfNameEmployee = true;
-                              if (_value_NameEmployee.isEmpty)
-                                _isChangeToActive_tfNameEmployee = false;
-                              else
-                                _isChangeToActive_tfNameEmployee = true;
-                              if (_value_NameEmployee.isEmpty)
-                                _isChangeToActive_tfNameEmployee = false;
-                              else
-                                _isChangeToActive_tfNameEmployee = true;
-                              if (_value_NameEmployee.isEmpty)
-                                _isChangeToActive_tfNameEmployee = false;
-                              else
-                                _isChangeToActive_tfNameEmployee = true;
+                              _isChangeToActive_tfCreator =
+                                  _value_Creator.isNotEmpty;
+                              _isChangeToActive_tfDateCreated =
+                                  _value_DateCreated.isNotEmpty;
+                              _isChangeToActive_tfEmail =
+                                  _value_Email.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfOffice =
+                                  _value_Office.isNotEmpty;
+                              _isChangeToActive_tfStatus =
+                                  _value_Status.isNotEmpty;
+                              _isChangeToActive_tfRank = _value_Rank.isNotEmpty;
+                              _isChangeToActive_tfTypeOfWork =
+                                  _value_TypeOfWork.isNotEmpty;
                             });
                           },
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            setState(() {
+                              _value_NameEmployee = value;
+                            });
+                          },
                         ),
                       ),
                       SizedBox(
@@ -183,12 +180,39 @@ class _RegisterViewState extends State<RegisterView> {
                         width: SCREEN_WIDTH,
                         child: MyTextField(
                           TextHint: 'Văn phòng làm việc',
-                          ChangeToActive: false,
+                          ChangeToActive: _isChangeToActive_tfOffice,
                           enableSuggestions: false,
                           autocorrect: false,
                           obscureText: false,
-                          onTap: () {},
-                          onChanged: (value) {},
+                          onTap: () {
+                            setState(() {
+                              _isChangeToActive_tfOffice = true;
+
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfCreator =
+                                  _value_Creator.isNotEmpty;
+                              _isChangeToActive_tfDateCreated =
+                                  _value_DateCreated.isNotEmpty;
+                              _isChangeToActive_tfEmail =
+                                  _value_Email.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+
+                              _isChangeToActive_tfStatus =
+                                  _value_Status.isNotEmpty;
+                              _isChangeToActive_tfOffice =
+                                  _value_Rank.isNotEmpty;
+                              _isChangeToActive_tfTypeOfWork =
+                                  _value_TypeOfWork.isNotEmpty;
+                            });
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              _value_Office = value;
+                            });
+                            print("AAAAAAAAAAAAAAAAAAA $value");
+                          },
                         ),
                       ),
                       SizedBox(height: 10),
@@ -198,12 +222,36 @@ class _RegisterViewState extends State<RegisterView> {
                             width: (SCREEN_WIDTH / 3) - 18,
                             child: MyTextField(
                               TextHint: 'Cấp bậc',
-                              ChangeToActive: false,
+                              ChangeToActive: _isChangeToActive_tfRank,
                               enableSuggestions: false,
                               autocorrect: false,
                               obscureText: false,
-                              onTap: () {},
-                              onChanged: (value) {},
+                              onTap: () {
+                                setState(() {
+                                  _isChangeToActive_tfRank = true;
+                                  _isChangeToActive_tfCreator =
+                                      _value_Creator.isNotEmpty;
+                                  _isChangeToActive_tfDateCreated =
+                                      _value_DateCreated.isNotEmpty;
+                                  _isChangeToActive_tfEmail =
+                                      _value_Email.isNotEmpty;
+                                  _isChangeToActive_tfNameEmployee =
+                                      _value_NameEmployee.isNotEmpty;
+                                  _isChangeToActive_tfOffice =
+                                      _value_Office.isNotEmpty;
+                                  _isChangeToActive_tfStatus =
+                                      _value_Status.isNotEmpty;
+                                  _isChangeToActive_tfNameEmployee =
+                                      _value_NameEmployee.isNotEmpty;
+                                  _isChangeToActive_tfTypeOfWork =
+                                      _value_TypeOfWork.isNotEmpty;
+                                });
+                              },
+                              onChanged: (value) {
+                                setState(() {
+                                  _value_Rank = value;
+                                });
+                              },
                             ),
                           ),
                           SizedBox(
@@ -214,12 +262,36 @@ class _RegisterViewState extends State<RegisterView> {
                                 ((SCREEN_WIDTH / 3) + (SCREEN_WIDTH / 3)) - 18,
                             child: MyTextField(
                               TextHint: 'Loại hình công việc',
-                              ChangeToActive: false,
+                              ChangeToActive: _isChangeToActive_tfTypeOfWork,
                               enableSuggestions: false,
                               autocorrect: false,
                               obscureText: false,
-                              onTap: () {},
-                              onChanged: (value) {},
+                              onTap: () {
+                                setState(() {
+                                  _isChangeToActive_tfTypeOfWork = true;
+                                  _isChangeToActive_tfCreator =
+                                      _value_Creator.isNotEmpty;
+                                  _isChangeToActive_tfDateCreated =
+                                      _value_DateCreated.isNotEmpty;
+                                  _isChangeToActive_tfEmail =
+                                      _value_Email.isNotEmpty;
+                                  _isChangeToActive_tfNameEmployee =
+                                      _value_NameEmployee.isNotEmpty;
+                                  _isChangeToActive_tfOffice =
+                                      _value_Office.isNotEmpty;
+                                  _isChangeToActive_tfStatus =
+                                      _value_Status.isNotEmpty;
+                                  _isChangeToActive_tfRank =
+                                      _value_Rank.isNotEmpty;
+                                  _isChangeToActive_tfNameEmployee =
+                                      _value_NameEmployee.isNotEmpty;
+                                });
+                              },
+                              onChanged: (value) {
+                                setState(() {
+                                  _value_TypeOfWork = value;
+                                });
+                              },
                             ),
                           ),
                         ],
@@ -229,12 +301,35 @@ class _RegisterViewState extends State<RegisterView> {
                         width: SCREEN_WIDTH,
                         child: MyTextField(
                           TextHint: 'Email',
-                          ChangeToActive: false,
+                          ChangeToActive: _isChangeToActive_tfEmail,
                           enableSuggestions: false,
                           autocorrect: false,
                           obscureText: false,
-                          onTap: () {},
-                          onChanged: (value) {},
+                          onTap: () {
+                            setState(() {
+                              _isChangeToActive_tfEmail = true;
+                              _isChangeToActive_tfCreator =
+                                  _value_Creator.isNotEmpty;
+                              _isChangeToActive_tfDateCreated =
+                                  _value_DateCreated.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfOffice =
+                                  _value_Office.isNotEmpty;
+                              _isChangeToActive_tfStatus =
+                                  _value_Status.isNotEmpty;
+                              _isChangeToActive_tfRank = _value_Rank.isNotEmpty;
+                              _isChangeToActive_tfTypeOfWork =
+                                  _value_TypeOfWork.isNotEmpty;
+                            });
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              _value_Email = value;
+                            });
+                          },
                         ),
                       ),
                       SizedBox(height: 10),
@@ -242,12 +337,35 @@ class _RegisterViewState extends State<RegisterView> {
                         width: SCREEN_WIDTH,
                         child: MyTextField(
                           TextHint: 'Trạng thái',
-                          ChangeToActive: false,
+                          ChangeToActive: _isChangeToActive_tfStatus,
                           enableSuggestions: false,
                           autocorrect: false,
                           obscureText: false,
-                          onTap: () {},
-                          onChanged: (value) {},
+                          onTap: () {
+                            setState(() {
+                              _isChangeToActive_tfStatus = true;
+                              _isChangeToActive_tfCreator =
+                                  _value_Creator.isNotEmpty;
+                              _isChangeToActive_tfDateCreated =
+                                  _value_DateCreated.isNotEmpty;
+                              _isChangeToActive_tfEmail =
+                                  _value_Email.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfOffice =
+                                  _value_Office.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfRank = _value_Rank.isNotEmpty;
+                              _isChangeToActive_tfTypeOfWork =
+                                  _value_TypeOfWork.isNotEmpty;
+                            });
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              _value_Status = value;
+                            });
+                          },
                         ),
                       ),
                       SizedBox(height: 10),
@@ -255,12 +373,35 @@ class _RegisterViewState extends State<RegisterView> {
                         width: SCREEN_WIDTH,
                         child: MyTextField(
                           TextHint: 'Người tạo',
-                          ChangeToActive: false,
+                          ChangeToActive: _isChangeToActive_tfCreator,
                           enableSuggestions: false,
                           autocorrect: false,
                           obscureText: false,
-                          onTap: () {},
-                          onChanged: (value) {},
+                          onTap: () {
+                            setState(() {
+                              _isChangeToActive_tfCreator = true;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfDateCreated =
+                                  _value_DateCreated.isNotEmpty;
+                              _isChangeToActive_tfEmail =
+                                  _value_Email.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfOffice =
+                                  _value_Office.isNotEmpty;
+                              _isChangeToActive_tfStatus =
+                                  _value_Status.isNotEmpty;
+                              _isChangeToActive_tfRank = _value_Rank.isNotEmpty;
+                              _isChangeToActive_tfTypeOfWork =
+                                  _value_TypeOfWork.isNotEmpty;
+                            });
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              _value_Creator = value;
+                            });
+                          },
                         ),
                       ),
                       SizedBox(height: 10),
@@ -268,12 +409,35 @@ class _RegisterViewState extends State<RegisterView> {
                         width: SCREEN_WIDTH,
                         child: MyTextField(
                           TextHint: 'Ngày tạo',
-                          ChangeToActive: false,
+                          ChangeToActive: _isChangeToActive_tfDateCreated,
                           enableSuggestions: false,
                           autocorrect: false,
                           obscureText: false,
-                          onTap: () {},
-                          onChanged: (value) {},
+                          onTap: () {
+                            setState(() {
+                              _isChangeToActive_tfDateCreated = true;
+                              _isChangeToActive_tfCreator =
+                                  _value_Creator.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_DateCreated.isNotEmpty;
+                              _isChangeToActive_tfEmail =
+                                  _value_Email.isNotEmpty;
+                              _isChangeToActive_tfNameEmployee =
+                                  _value_NameEmployee.isNotEmpty;
+                              _isChangeToActive_tfOffice =
+                                  _value_Office.isNotEmpty;
+                              _isChangeToActive_tfStatus =
+                                  _value_Status.isNotEmpty;
+                              _isChangeToActive_tfRank = _value_Rank.isNotEmpty;
+                              _isChangeToActive_tfTypeOfWork =
+                                  _value_TypeOfWork.isNotEmpty;
+                            });
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              _value_DateCreated = value;
+                            });
+                          },
                         ),
                       ),
                     ],

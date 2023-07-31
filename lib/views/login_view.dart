@@ -301,7 +301,6 @@ class _LoginViewState extends State<LoginView> {
                             onTap: () {
                               setState(() {
                                 _isChangeToActive_Email = true;
-                                _isChangeToActive_Email = true;
                                 _isChangeToActive_Password =
                                     _valuePassword.isNotEmpty;
                               });
@@ -327,10 +326,8 @@ class _LoginViewState extends State<LoginView> {
                                   onTap: () {
                                     setState(() {
                                       _isChangeToActive_Password = true;
-                                      if (_valueEmail.isEmpty)
-                                        _isChangeToActive_Email = false;
-                                      else
-                                        _isChangeToActive_Email = true;
+                                      _isChangeToActive_Email =
+                                          _valueEmail.isNotEmpty;
                                     });
                                   },
                                   onChanged: (value) {

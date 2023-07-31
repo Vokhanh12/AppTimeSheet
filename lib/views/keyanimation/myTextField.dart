@@ -32,6 +32,7 @@ class _MyTextFieldState extends State<MyTextField> {
 
     return TextField(
         onTap: widget.onTap,
+        onChanged: widget.onChanged,
         keyboardType: widget.keyboardType,
         obscureText: widget.obscureText,
         style: TextStyle(
