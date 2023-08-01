@@ -2,46 +2,93 @@ import 'package:flutter/material.dart';
 import 'package:timesheet/views/keyanimation/buttonBar.dart';
 import 'package:timesheet/views/keyanimation/buttonEye.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:timesheet/views/keyanimation/menuOverlayAccount.dart';
 import 'package:timesheet/views/login_view.dart';
 
-class TimeSheetView extends StatelessWidget {
+class TimeSheetView extends StatefulWidget {
   const TimeSheetView({Key? key}) : super(key: key);
 
   @override
+  State<TimeSheetView> createState() => _TimeSheetViewState();
+}
+
+class _TimeSheetViewState extends State<TimeSheetView> {
+  bool _isShowOverlay = false;
+
+  @override
   Widget build(BuildContext context) {
+    final double SCREEN_HEIGHT = MediaQuery.of(context).size.height;
+    final double SCREEN_WIDTH = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: const NavigationDrawer(),
-      appBar: AppBar(
-        backgroundColor: Color(0xFF0D7BD4),
-        title: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      'TIMESHEET',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w800,
+        drawer: const NavigationDrawer(),
+        appBar: AppBar(
+          backgroundColor: Color(0xFF0D7BD4),
+          title: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        'TIMESHEET',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://images2.thanhnien.vn/528068263637045248/2023/3/28/john-wick-1679999395599601703767.jpg")),
-              ],
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        _isShowOverlay = true;
+                      });
+                    },
+                    child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://images2.thanhnien.vn/528068263637045248/2023/3/28/john-wick-1679999395599601703767.jpg")),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+        body: Container(
+          width: SCREEN_WIDTH,
+          height: SCREEN_HEIGHT,
+          child: Stack(children: [
+            Center(child: Text("Hello world")),
+            if (_isShowOverlay)
+              Center(
+                child: Stack(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        print("hello");
+                      },
+                      child: Container(
+                        width: SCREEN_WIDTH,
+                        height: SCREEN_HEIGHT,
+                        color: const Color.fromARGB(255, 201, 15, 15),
+                      ),
+                    ),
+                    Center(
+                      child: Container(
+                        width: SCREEN_WIDTH * 2.1 / 3,
+                        height: (SCREEN_HEIGHT * 1.5) / 3,
+                        child: MenuOverlayAccount(),
+                      ),
+                    )
+                  ],
+                ),
+              )
+          ]),
+        ));
   }
 }
 
