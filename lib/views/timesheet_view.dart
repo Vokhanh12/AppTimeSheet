@@ -62,19 +62,21 @@ class _TimeSheetViewState extends State<TimeSheetView> {
           width: SCREEN_WIDTH,
           height: SCREEN_HEIGHT,
           child: Stack(children: [
-            Center(child: Text("Hello world")),
             if (_isShowOverlay)
               Center(
                 child: Stack(
                   children: [
                     InkWell(
+                      //Click to background leave MynuOverlayAccount
                       onTap: () {
-                        print("hello");
+                        setState(() {
+                          _isShowOverlay = false;
+                        });
                       },
                       child: Container(
+                        color: Color.fromARGB(255, 87, 88, 87).withOpacity(0.5),
                         width: SCREEN_WIDTH,
                         height: SCREEN_HEIGHT,
-                        color: const Color.fromARGB(255, 201, 15, 15),
                       ),
                     ),
                     Center(
@@ -169,6 +171,7 @@ class NavigationDrawer extends StatelessWidget {
                 ),
               ),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => TimeSheetView()));
               },

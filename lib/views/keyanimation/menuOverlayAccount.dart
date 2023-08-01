@@ -63,7 +63,6 @@ Widget buildHeader(BuildContext context) => Material(
     );
 
 Widget BuildMenuItems(BuildContext context) => Container(
-      color: const Color.fromARGB(255, 173, 17, 17),
       padding: EdgeInsets.only(top: 5),
       child: Container(
         height: MediaQuery.of(context).size.height,
@@ -73,7 +72,7 @@ Widget BuildMenuItems(BuildContext context) => Container(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Container(
+              Expanded(
                 child: Material(
                   color: Colors.white,
                   elevation: 18,
@@ -96,46 +95,50 @@ Widget BuildMenuItems(BuildContext context) => Container(
                   ),
                 ),
               ),
-              Material(
-                color: Colors.white,
-                elevation: 18,
-                shadowColor: const Color.fromARGB(255, 231, 240, 248),
-                child: ListTile(
-                  leading: Icon(
-                    FontAwesomeIcons.lock,
-                    color: Color(0xFF4D4D4D),
-                  ),
-                  title: const Text(
-                    'Đổi mật khẩu',
-                    style: TextStyle(
+              Expanded(
+                child: Material(
+                  color: Colors.white,
+                  elevation: 18,
+                  shadowColor: const Color.fromARGB(255, 231, 240, 248),
+                  child: ListTile(
+                    leading: Icon(
+                      FontAwesomeIcons.lock,
                       color: Color(0xFF4D4D4D),
-                      fontSize: 15,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w600,
                     ),
+                    title: const Text(
+                      'Đổi mật khẩu',
+                      style: TextStyle(
+                        color: Color(0xFF4D4D4D),
+                        fontSize: 15,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    onTap: () {},
                   ),
-                  onTap: () {},
                 ),
               ),
-              Material(
-                color: Colors.white,
-                elevation: 18,
-                shadowColor: const Color.fromARGB(255, 231, 240, 248),
-                child: ListTile(
-                  leading: Icon(
-                    FontAwesomeIcons.doorOpen,
-                    color: Color(0xFF4D4D4D),
-                  ),
-                  title: const Text(
-                    'Đăng xuất',
-                    style: TextStyle(
+              Expanded(
+                child: Material(
+                  color: Colors.white,
+                  elevation: 18,
+                  shadowColor: const Color.fromARGB(255, 231, 240, 248),
+                  child: ListTile(
+                    leading: Icon(
+                      FontAwesomeIcons.doorOpen,
                       color: Color(0xFF4D4D4D),
-                      fontSize: 15,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w600,
                     ),
+                    title: const Text(
+                      'Đăng xuất',
+                      style: TextStyle(
+                        color: Color(0xFF4D4D4D),
+                        fontSize: 15,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    onTap: () {},
                   ),
-                  onTap: () {},
                 ),
               ),
             ],
